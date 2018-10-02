@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="google-site-verification" content="ペットのクロエと泊まった宿をCesium上に掲載。JavaScript、CesiumAPI、KMLで作成。" />
+<meta name="Description" content="ペットのクロエと泊まった宿をCesium上に掲載。JavaScript、CesiumAPI、KMLで作成。" />
+<title>クロエダイアモンドのペットのクロエと泊まった宿(Cesium)</title>
+  <!-- Use correct character set. -->
+  <meta charset="utf-8">
+  <!-- Tell IE to use the latest, best version. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <script src="../Build/Cesium/Cesium.js"></script>
+  <style>
+      @import url(../Build/Cesium/Widgets/widgets.css);
+      html, body, #cesiumContainer {
+          width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    var viewer = new Cesium.Viewer('cesiumContainer');
+    viewer.dataSources.add(Cesium.KmlDataSource.load("kuroespot_cs.kml"));
+    viewer.camera.setView({
+      destination: Cesium.Cartesian3.fromDegrees(138, 30, 3000000),
+      orientation: {
+        heading: 0, // 水平方向の回転度（ラジアン）
+        pitch: -1.3, // 垂直方向の回転度（ラジアン）
+        roll: 0
+        }
+    });
+  </script>
+</body>
+</html>
