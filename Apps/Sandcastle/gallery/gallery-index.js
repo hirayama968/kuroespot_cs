@@ -1,5 +1,5 @@
 // This file is automatically rebuilt by the Cesium build process.
-var hello_world_index = 86;
+var hello_world_index = 85;
 var gallery_demos = [{
   "name": "3D Models",
   "isNew": false,
@@ -88,14 +88,6 @@ var gallery_demos = [{
   "name": "ArcticDEM",
   "isNew": false,
   "img": "ArcticDEM.jpg"
-}, {
-  "name": "Atmosphere",
-  "isNew": true,
-  "img": "Atmosphere.jpg"
-}, {
-  "name": "Atmosphere Color",
-  "isNew": false,
-  "img": "Atmosphere Color.jpg"
 }, {
   "name": "Billboards",
   "isNew": false,
@@ -222,7 +214,7 @@ var gallery_demos = [{
   "img": "Cardboard.jpg"
 }, {
   "name": "Cartographic Limit Rectangle",
-  "isNew": true,
+  "isNew": false,
   "img": "Cartographic Limit Rectangle.jpg"
 }, {
   "name": "Cesium Inspector",
@@ -242,11 +234,11 @@ var gallery_demos = [{
   "img": "Circles and Ellipses.jpg"
 }, {
   "name": "Clamp to 3D Model",
-  "isNew": true,
+  "isNew": false,
   "img": "Clamp to 3D Model.jpg"
 }, {
   "name": "Clamp to 3D Tiles",
-  "isNew": true,
+  "isNew": false,
   "img": "Clamp to 3D Tiles.jpg"
 }, {
   "name": "Clamp to Terrain",
@@ -337,6 +329,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Google Earth Enterprise.jpg"
 }, {
+  "name": "Ground Atmosphere",
+  "isNew": false,
+  "img": "Ground Atmosphere.jpg"
+}, {
   "name": "HTML Overlays",
   "isNew": false,
   "img": "HTML Overlays.jpg"
@@ -349,9 +345,17 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Hello World.jpg"
 }, {
+  "name": "Image-Based Lighting",
+  "isNew": true,
+  "img": "Image-Based Lighting.jpg"
+}, {
   "name": "Imagery Adjustment",
   "isNew": false,
   "img": "Imagery Adjustment.jpg"
+}, {
+  "name": "Imagery Cutout",
+  "isNew": false,
+  "img": "Imagery Cutout.jpg"
 }, {
   "name": "Imagery Layers",
   "isNew": false,
@@ -489,6 +493,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Rotatable 2D Map.jpg"
 }, {
+  "name": "Sample Height from 3D Tiles",
+  "isNew": false,
+  "img": "Sample Height from 3D Tiles.jpg"
+}, {
   "name": "Scene Rendering Performance",
   "isNew": false,
   "img": "Scene Rendering Performance.jpg"
@@ -504,6 +512,10 @@ var gallery_demos = [{
   "name": "Show or Hide Entities",
   "isNew": false,
   "img": "Show or Hide Entities.jpg"
+}, {
+  "name": "Sky Atmosphere",
+  "isNew": false,
+  "img": "Sky Atmosphere.jpg"
 }, {
   "name": "Spheres and Ellipsoids",
   "isNew": false,
