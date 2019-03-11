@@ -346,7 +346,7 @@ var gallery_demos = [{
   "img": "Hello World.jpg"
 }, {
   "name": "Image-Based Lighting",
-  "isNew": true,
+  "isNew": false,
   "img": "Image-Based Lighting.jpg"
 }, {
   "name": "Imagery Adjustment",
@@ -477,6 +477,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Polyline Volume.jpg"
 }, {
+  "name": "Polylines on 3D Tiles",
+  "isNew": false,
+  "img": "Polylines on 3D Tiles.jpg"
+}, {
   "name": "Post Processing",
   "isNew": false,
   "img": "Post Processing.jpg"
@@ -540,6 +544,10 @@ var gallery_demos = [{
   "name": "Time Dynamic Point Cloud",
   "isNew": false,
   "img": "Time Dynamic Point Cloud.jpg"
+}, {
+  "name": "Time Dynamic Wheels",
+  "isNew": false,
+  "img": "Time Dynamic Wheels.jpg"
 }, {
   "name": "Video",
   "isNew": false,
