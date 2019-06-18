@@ -353,6 +353,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Imagery Adjustment.jpg"
 }, {
+  "name": "Imagery Color To Alpha",
+  "isNew": false,
+  "img": "Imagery Color To Alpha.jpg"
+}, {
   "name": "Imagery Cutout",
   "isNew": false,
   "img": "Imagery Cutout.jpg"
@@ -404,6 +408,10 @@ var gallery_demos = [{
   "name": "Materials",
   "isNew": false,
   "img": "Materials.jpg"
+}, {
+  "name": "Montreal Point Cloud",
+  "isNew": true,
+  "img": "Montreal Point Cloud.jpg"
 }, {
   "name": "Multi-part CZML",
   "isNew": false,

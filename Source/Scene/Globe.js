@@ -175,7 +175,7 @@ define([
          * Enable lighting the globe with the sun as a light source.
          *
          * @type {Boolean}
-         * @default true
+         * @default false
          */
         this.enableLighting = false;
 
@@ -784,16 +784,7 @@ define([
             this._material.update(frameState.context);
         }
 
-        var surface = this._surface;
-        var pass = frameState.passes;
-
-        if (pass.render) {
-            surface.render(frameState);
-        }
-
-        if (pass.pick) {
-            surface.render(frameState);
-        }
+        this._surface.render(frameState);
     };
 
     /**
