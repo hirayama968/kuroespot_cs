@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Kuroespot_googlemaps</name>
+
+    <Placemark>
+      <name>クロエの家</name>
+      <Style><IconStyle><Icon><href>kuroehome_cs.png</href></Icon></IconStyle></Style>
+      <Point><coordinates>139.654509, 35.638884, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ホワイトサドル</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://p-whitesaddle.com/">ホワイトサドル</a>]]></description>
+      <Point><coordinates>139.114692, 34.894383, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>八ヶ岳わんわんパラダイス</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.wanpara.jp/yatsugatake/" height="200">八ヶ岳わんわんパラダイス</a>]]></description>
+      <Point><coordinates>138.352533, 35.888182, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>伊豆高原わんわんパラダイス</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.wanpara.jp/izu/" height="200">伊豆高原わんわんパラダイス</a>]]></description>
+      <Point><coordinates>139.108428, 34.908986, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>わん泊亭</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.koyokan-wanpakutei.jp/" height="200">わん泊亭</a>]]></description>
+      <Point><coordinates>137.240967, 35.810184, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>篠島南風</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.nanpuu.jp/" height="200">篠島南風</a>]]></description>
+      <Point><coordinates>137.00444, 34.674601, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>日光ありの塔</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.nikko.or.jp/arinotou/" height="200">日光ありの塔</a>]]></description>
+      <Point><coordinates>139.61753, 36.777985, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ペンションラモー</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://llamo.sakura.ne.jp/" height="200">ペンションラモー</a>]]></description>
+      <Point><coordinates>138.596672, 36.351476, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ホテルフォレスタ那須塩原</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://nasunogahara.co.jp/hotelforesta/" height="200">ホテルフォレスタ那須塩原</a>]]></description>
+      <Point><coordinates>139.784473, 36.986403, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>那須高原TOWAピュアコテージ</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.pure-cottages.jp/" height="200">那須高原TOWAピュアコテージ</a>]]></description>
+      <Point><coordinates>139.958183, 37.065372, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ラフォーレ那須</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.laforet.co.jp/nasu/" height="200">ラフォーレ那須</a>]]></description>
+      <Point><coordinates>140.019411, 37.086827, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ポルトメゾン・ルームス</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.portomaison.com/" height="200">ポルトメゾン・ルームス</a>]]></description>
+      <Point><coordinates>139.957839, 34.94175, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>那須ハートヒルズ</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.heart-hills.jp/" height="200">那須ハートヒルズ</a>]]></description>
+      <Point><coordinates>140.036905, 37.02273, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ザ・ヴィンテージビュー</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.thevintagev.com/" height="200">ザ・ヴィンテージビュー</a>]]></description>
+      <Point><coordinates>139.996654, 37.062349, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ラフォーレ強羅湯の棲</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.laforet.co.jp/gora/" height="200">ラフォーレ強羅湯の棲</a>]]></description>
+      <Point><coordinates>139.041758, 35.250609, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>大箱根一の湯</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.ichinoyu.co.jp/daihakone/" height="200">大箱根一の湯</a>]]></description>
+      <Point><coordinates>138.996757, 35.258267, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>高山わんわんパラダイス</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.wanpara.jp/takayama/" height="200">高山わんわんパラダイス</a>]]></description>
+      <Point><coordinates>137.501875, 36.173166, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>>仔犬のワルツ</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://koinu-w.com/" height="200">>仔犬のワルツ</a>]]></description>
+      <Point><coordinates>138.774111, 34.784145, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>IRAGO</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.irako.info/pet/" height="200">IRAGO</a>]]></description>
+      <Point><coordinates>137.021201, 34.581195, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ウェルネスの森那須</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.hotespa.net/hotels/nasu/" height="200">ウェルネスの森那須</a>]]></description>
+      <Point><coordinates>140.021692, 37.045285, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>ハロハロ</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.phalohalo.com/" height="200">ハロハロ</a>]]></description>
+      <Point><coordinates>140.00417, 37.065323, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>菅平カゾラーレ</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.caro-foresta.com/casolare/index.html" height="200">菅平カゾラーレ</a>]]></description>
+      <Point><coordinates>138.324598, 36.53596, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>軽井沢ジャルディーノ</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://www.caro-foresta.com/giardino/index.php" height="200">軽井沢ジャルディーノ</a>]]></description>
+      <Point><coordinates>138.559587, 36.347231, 0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>那須　IMAGINE DOGS</name>
+      <Style><IconStyle><Icon><href>kuroeicon_cs.png</href></Icon></IconStyle></Style>
+      <description><![CDATA[<a href="http://imagine.nasunogahara.co.jp/dogs/" height="200">那須イマジンドッグス</a>]]></description>
+      <Point><coordinates>140.000469, 37.069335, 0</coordinates></Point>
+    </Placemark>
+
+  </Document>
+</kml>

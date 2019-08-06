@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="ペットのクロエとお出かけした旧軽井沢観光マップをCesium上に掲載。CesiumAPI、KMLで作成。" />
+<meta name="keywords" content="平山秀昭,クロエダイアモンド,目白大学,メディア学部,Cesium,KML">
+<title>ペットのクロエとお出かけした旧軽井沢観光マップ(Cesium)</title>
+  <!-- Use correct character set. -->
+  <meta charset="utf-8">
+  <!-- Tell IE to use the latest, best version. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>KuroeSpot</title>
+  <script src="../Build/Cesium/Cesium.js"></script>
+  <style>
+      @import url(../Build/Cesium/Widgets/widgets.css);
+      html, body, #cesiumContainer {
+          width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    var viewer = new Cesium.Viewer('cesiumContainer');
+    viewer.dataSources.add(Cesium.KmlDataSource.load("kyukaruizawa_cs.kml"));
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(138.636026, 36.359240, 1000)});
+  </script>
+</body>
+</html>
