@@ -4466,7 +4466,6 @@ define('Core/Resource',[
             }
 
             var deferred = when.defer();
-
             Resource._Implementations.createImage(url, crossOrigin, deferred, flipY, preferImageBitmap);
 
             return deferred.promise;
@@ -5352,24 +5351,18 @@ define('Core/Resource',[
 
                 return Resource.fetchBlob({
                     url: url
-                });
-            })
-            .then(function(blob) {
-                if (!defined(blob)) {
-                    return;
-                }
+                })
+                .then(function(blob) {
+                    if (!defined(blob)) {
+                        deferred.reject(new RuntimeError('Successfully retrieved ' + url + ' but it contained no content.'));
+                        return;
+                    }
 
-                return Resource.createImageBitmapFromBlob(blob, {
-                    flipY: flipY,
-                    premultiplyAlpha: false
-                });
-            })
-            .then(function(imageBitmap) {
-                if (!defined(imageBitmap)) {
-                    return;
-                }
-
-                deferred.resolve(imageBitmap);
+                    return Resource.createImageBitmapFromBlob(blob, {
+                        flipY: flipY,
+                        premultiplyAlpha: false
+                    });
+                }).then(deferred.resolve);
             })
             .otherwise(deferred.reject);
     };
@@ -6124,6 +6117,13 @@ define('Core/Math',[
     CesiumMath.SIXTY_FOUR_KILOBYTES = 64 * 1024;
 
     /**
+     * 4 * 1024 * 1024 * 1024
+     * @type {Number}
+     * @constant
+     */
+    CesiumMath.FOUR_GIGABYTES = 4 * 1024 * 1024 * 1024;
+
+    /**
      * Returns the sign of the value; 1 if the value is positive, -1 if the value is
      * negative, or 0 if the value is 0.
      *
@@ -6624,7 +6624,9 @@ define('Core/Math',[
         if (n >= length) {
             var sum = factorials[length - 1];
             for (var i = length; i <= n; i++) {
-                factorials.push(sum * i);
+                var next = sum * i;
+                factorials.push(next);
+                sum = next;
             }
         }
         return factorials[n];
@@ -7104,7 +7106,7 @@ define('Core/Cartesian3',[
      * Flattens an array of Cartesian3s into an array of components.
      *
      * @param {Cartesian3[]} array The array of cartesians to pack.
-     * @param {Number[]} result The array onto which to store the result.
+     * @param {Number[]} [result] The array onto which to store the result.
      * @returns {Number[]} The packed array.
      */
     Cartesian3.packArray = function(array, result) {
@@ -7127,7 +7129,7 @@ define('Core/Cartesian3',[
      * Unpacks an array of cartesian components into an array of Cartesian3s.
      *
      * @param {Number[]} array The array of components to unpack.
-     * @param {Cartesian3[]} result The array onto which to store the result.
+     * @param {Cartesian3[]} [result] The array onto which to store the result.
      * @returns {Cartesian3[]} The unpacked array.
      */
     Cartesian3.unpackArray = function(array, result) {
@@ -10791,7 +10793,7 @@ define('Core/Cartesian4',[
      * Flattens an array of Cartesian4s into and array of components.
      *
      * @param {Cartesian4[]} array The array of cartesians to pack.
-     * @param {Number[]} result The array onto which to store the result.
+     * @param {Number[]} [result] The array onto which to store the result.
      * @returns {Number[]} The packed array.
      */
     Cartesian4.packArray = function(array, result) {
@@ -10814,7 +10816,7 @@ define('Core/Cartesian4',[
      * Unpacks an array of cartesian components into and array of Cartesian4s.
      *
      * @param {Number[]} array The array of components to unpack.
-     * @param {Cartesian4[]} result The array onto which to store the result.
+     * @param {Cartesian4[]} [result] The array onto which to store the result.
      * @returns {Cartesian4[]} The unpacked array.
      */
     Cartesian4.unpackArray = function(array, result) {
@@ -16293,7 +16295,7 @@ define('Core/Cartesian2',[
      * Flattens an array of Cartesian2s into and array of components.
      *
      * @param {Cartesian2[]} array The array of cartesians to pack.
-     * @param {Number[]} result The array onto which to store the result.
+     * @param {Number[]} [result] The array onto which to store the result.
      * @returns {Number[]} The packed array.
      */
     Cartesian2.packArray = function(array, result) {
@@ -16316,7 +16318,7 @@ define('Core/Cartesian2',[
      * Unpacks an array of cartesian components into and array of Cartesian2s.
      *
      * @param {Number[]} array The array of components to unpack.
-     * @param {Cartesian2[]} result The array onto which to store the result.
+     * @param {Cartesian2[]} [result] The array onto which to store the result.
      * @returns {Cartesian2[]} The unpacked array.
      */
     Cartesian2.unpackArray = function(array, result) {
@@ -28402,41 +28404,42 @@ define('Core/GroundPolylineGeometry',[
         return result;
     }
 
+    function tangentDirection(target, origin, up, result) {
+        result = direction(target, origin, result);
+
+        // orthogonalize
+        result = Cartesian3.cross(result, up, result);
+        result = Cartesian3.normalize(result, result);
+        result = Cartesian3.cross(up, result, result);
+        return result;
+    }
+
     var toPreviousScratch = new Cartesian3();
     var toNextScratch = new Cartesian3();
     var forwardScratch = new Cartesian3();
-    var coplanarNormalScratch = new Cartesian3();
-    var coplanarPlaneScratch = new Plane(Cartesian3.UNIT_X, 0.0);
     var vertexUpScratch = new Cartesian3();
     var cosine90 = 0.0;
+    var cosine180 = -1.0;
     function computeVertexMiterNormal(previousBottom, vertexBottom, vertexTop, nextBottom, result) {
         var up = direction(vertexTop, vertexBottom, vertexUpScratch);
-        var toPrevious = direction(previousBottom, vertexBottom, toPreviousScratch);
-        var toNext = direction(nextBottom, vertexBottom, toNextScratch);
 
-        // Check if points are coplanar in a right-side-pointing plane that contains "up."
-        // This is roughly equivalent to the points being colinear in cartographic space.
-        var coplanarNormal = Cartesian3.cross(up, toPrevious, coplanarNormalScratch);
-        coplanarNormal = Cartesian3.normalize(coplanarNormal, coplanarNormal);
-        var coplanarPlane = Plane.fromPointNormal(vertexBottom, coplanarNormal, coplanarPlaneScratch);
-        var nextBottomDistance = Plane.getPointDistance(coplanarPlane, nextBottom);
-        if (CesiumMath.equalsEpsilon(nextBottomDistance, 0.0, CesiumMath.EPSILON7)) {
-            // If the points are coplanar, point the normal in the direction of the plane
-            Cartesian3.clone(coplanarNormal, result);
-            return result;
+        // Compute vectors pointing towards neighboring points but tangent to this point on the ellipsoid
+        var toPrevious = tangentDirection(previousBottom, vertexBottom, up, toPreviousScratch);
+        var toNext = tangentDirection(nextBottom, vertexBottom, up, toNextScratch);
+
+        // Check if tangents are almost opposite - if so, no need to miter.
+        if (CesiumMath.equalsEpsilon(Cartesian3.dot(toPrevious, toNext), cosine180, CesiumMath.EPSILON5)) {
+             result = Cartesian3.cross(up, toPrevious, result);
+             result = Cartesian3.normalize(result, result);
+             return result;
         }
 
-        // Average directions to previous and to next
+        // Average directions to previous and to next in the plane of Up
         result = Cartesian3.add(toNext, toPrevious, result);
         result = Cartesian3.normalize(result, result);
 
-        // Rotate this direction to be orthogonal to up
-        var forward = Cartesian3.cross(up, result, forwardScratch);
-        Cartesian3.normalize(forward, forward);
-        Cartesian3.cross(forward, up, result);
-        Cartesian3.normalize(result, result);
-
         // Flip the normal if it isn't pointing roughly bound right (aka if forward is pointing more "backwards")
+        var forward = Cartesian3.cross(up, result, forwardScratch);
         if (Cartesian3.dot(toNext, forward) < cosine90) {
             result = Cartesian3.negate(result, result);
         }
@@ -29061,7 +29064,7 @@ define('Core/GroundPolylineGeometry',[
 
                 var texcoordNormalization = texcoordNormalization3DY * topBottomSide;
                 if (texcoordNormalization === 0.0 && topBottomSide < 0.0) {
-                    texcoordNormalization = Number.POSITIVE_INFINITY;
+                    texcoordNormalization = 9.0; // some value greater than 1.0
                 }
                 rightNormalAndTextureCoordinateNormalizationY[wIndex] = texcoordNormalization;
 
@@ -29086,7 +29089,7 @@ define('Core/GroundPolylineGeometry',[
 
                     texcoordNormalization = texcoordNormalization2DY * topBottomSide;
                     if (texcoordNormalization === 0.0 && topBottomSide < 0.0) {
-                        texcoordNormalization = Number.POSITIVE_INFINITY;
+                        texcoordNormalization = 9.0; // some value greater than 1.0
                     }
                     texcoordNormalization2D[vec2Index + 1] = texcoordNormalization;
                 }

@@ -23,7 +23,7 @@ void main(void)\n\
     eyeCoordinate /= eyeCoordinate.w;\n\
 \n\
 #ifdef PER_INSTANCE_COLOR\n\
-    gl_FragColor = v_color;\n\
+    gl_FragColor = czm_gammaCorrect(v_color);\n\
 #else // PER_INSTANCE_COLOR\n\
     // Use distances for planes aligned with segment to prevent skew in dashing\n\
     float distanceFromStart = rayPlaneDistanceUnsafe(eyeCoordinate.xyz, -v_forwardDirectionEC, v_forwardDirectionEC.xyz, v_alignedPlaneDistances.x);\n\

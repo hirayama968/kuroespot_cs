@@ -13,6 +13,7 @@ attribute vec4 eyeOffset;                                  // eye offset in mete
 attribute vec4 scaleByDistance;                            // near, nearScale, far, farScale\n\
 attribute vec4 pixelOffsetScaleByDistance;                 // near, nearScale, far, farScale\n\
 attribute vec4 compressedAttribute3;                       // distance display condition near, far, disableDepthTestDistance, dimensions\n\
+attribute vec2 sdf;                                        // sdf outline color (rgb) and width (w)\n\
 #if defined(VERTEX_DEPTH_CHECK) || defined(FRAGMENT_DEPTH_CHECK)\n\
 attribute vec4 textureCoordinateBoundsOrLabelTranslate;    // the min and max x and y values for the texture coordinates\n\
 #endif\n\
@@ -30,6 +31,10 @@ varying mat2 v_rotationMatrix;\n\
 \n\
 varying vec4 v_pickColor;\n\
 varying vec4 v_color;\n\
+#ifdef SDF\n\
+varying vec4 v_outlineColor;\n\
+varying float v_outlineWidth;\n\
+#endif\n\
 \n\
 const float UPPER_BOUND = 32768.0;\n\
 \n\
@@ -416,10 +421,34 @@ if (lengthSq < disableDepthTestDistance) {\n\
 \n\
 #endif\n\
 \n\
+#ifdef SDF\n\
+    vec4 outlineColor;\n\
+    float outlineWidth;\n\
+\n\
+    temp = sdf.x;\n\
+    temp = temp * SHIFT_RIGHT8;\n\
+    outlineColor.b = (temp - floor(temp)) * SHIFT_LEFT8;\n\
+    temp = floor(temp) * SHIFT_RIGHT8;\n\
+    outlineColor.g = (temp - floor(temp)) * SHIFT_LEFT8;\n\
+    outlineColor.r = floor(temp);\n\
+\n\
+    temp = sdf.y;\n\
+    temp = temp * SHIFT_RIGHT8;\n\
+    float temp3 = (temp - floor(temp)) * SHIFT_LEFT8;\n\
+    temp = floor(temp) * SHIFT_RIGHT8;\n\
+    outlineWidth = (temp - floor(temp)) * SHIFT_LEFT8;\n\
+    outlineColor.a = floor(temp);\n\
+    outlineColor /= 255.0;\n\
+\n\
+    v_outlineWidth = outlineWidth / 255.0;\n\
+    v_outlineColor = outlineColor;\n\
+#endif\n\
+\n\
     v_pickColor = pickColor;\n\
 \n\
     v_color = color;\n\
     v_color.a *= translucency;\n\
+\n\
 }\n\
 ";
 });

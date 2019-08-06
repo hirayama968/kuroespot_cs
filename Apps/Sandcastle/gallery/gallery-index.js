@@ -1,5 +1,5 @@
 // This file is automatically rebuilt by the Cesium build process.
-var hello_world_index = 85;
+var hello_world_index = 88;
 var gallery_demos = [{
   "name": "3D Models",
   "isNew": false,
@@ -85,6 +85,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "ArcGIS MapServer.jpg"
 }, {
+  "name": "ArcGIS Tiled Elevation Terrain",
+  "isNew": false,
+  "img": "ArcGIS Tiled Elevation Terrain.jpg"
+}, {
   "name": "ArcticDEM",
   "isNew": false,
   "img": "ArcticDEM.jpg"
@@ -144,6 +148,10 @@ var gallery_demos = [{
   "name": "CZML Model - Node Transformations",
   "isNew": false,
   "img": "CZML Model - Node Transformations.jpg"
+}, {
+  "name": "CZML Model Articulations",
+  "isNew": false,
+  "img": "CZML Model Articulations.jpg"
 }, {
   "name": "CZML Path",
   "isNew": false,
@@ -305,6 +313,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Earth at Night.jpg"
 }, {
+  "name": "Export KML",
+  "isNew": false,
+  "img": "Export KML.jpg"
+}, {
   "name": "GeoJSON and TopoJSON",
   "isNew": false,
   "img": "GeoJSON and TopoJSON.jpg"
@@ -393,6 +405,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Labels.jpg"
 }, {
+  "name": "Labels SDF",
+  "isNew": true,
+  "img": "Labels SDF.jpg"
+}, {
   "name": "LensFlare",
   "isNew": false,
   "img": "LensFlare.jpg"
@@ -410,7 +426,7 @@ var gallery_demos = [{
   "img": "Materials.jpg"
 }, {
   "name": "Montreal Point Cloud",
-  "isNew": true,
+  "isNew": false,
   "img": "Montreal Point Cloud.jpg"
 }, {
   "name": "Multi-part CZML",

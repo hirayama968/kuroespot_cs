@@ -75,10 +75,11 @@ void main()\n\
     }\n\
 \n\
     // March ray forward to intersection with larger sphere and find\n\
-    // actual intersection point with ellipsoid.\n\
-    czm_ellipsoid ellipsoid = czm_ellipsoidNew(ellipsoidCenter, u_radii);\n\
     czm_ray ray = czm_ray(t * direction, direction);\n\
-    czm_raySegment intersection = czm_rayEllipsoidIntersectionInterval(ray, ellipsoid);\n\
+\n\
+    vec3 ellipsoid_inverseRadii = vec3(1.0 / u_radii.x, 1.0 / u_radii.y, 1.0 / u_radii.z);\n\
+\n\
+    czm_raySegment intersection = czm_rayEllipsoidIntersectionInterval(ray, ellipsoidCenter, ellipsoid_inverseRadii);\n\
 \n\
     if (czm_isEmpty(intersection))\n\
     {\n\
