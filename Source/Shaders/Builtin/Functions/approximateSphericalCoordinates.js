@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * Approximately computes spherical coordinates given a normal.\n\
  * Uses approximate inverse trigonometry for speed and consistency,\n\
  * since inverse trigonometry can differ from vendor-to-vendor and when compared with the CPU.\n\
@@ -20,4 +18,3 @@ vec2 czm_approximateSphericalCoordinates(vec3 normal) {\n\
     return vec2(latitudeApproximation, longitudeApproximation);\n\
 }\n\
 ";
-});

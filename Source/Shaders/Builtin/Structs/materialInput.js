@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * Used as input to every material's czm_getMaterial function.\n\
  *\n\
  * @name czm_materialInput\n\
@@ -30,4 +28,3 @@ struct czm_materialInput\n\
     float aspect;\n\
 };\n\
 ";
-});

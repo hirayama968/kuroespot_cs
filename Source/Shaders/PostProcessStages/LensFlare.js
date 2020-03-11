@@ -1,27 +1,26 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform sampler2D colorTexture;\n\
+export default "uniform sampler2D colorTexture;\n\
 uniform sampler2D dirtTexture;\n\
 uniform sampler2D starTexture;\n\
 uniform vec2 dirtTextureDimensions;\n\
 uniform float distortion;\n\
 uniform float ghostDispersal;\n\
 uniform float haloWidth;\n\
+uniform float dirtAmount;\n\
 uniform float earthRadius;\n\
 uniform float intensity;\n\
 \n\
 varying vec2 v_textureCoordinates;\n\
 \n\
 // whether it is in space or not\n\
-// 6500000.0 is Emprical value\n\
+// 6500000.0 is empirical value\n\
 #define DISTANCE_TO_SPACE 6500000.0\n\
 \n\
 // return ndc from world coordinate biased earthRadius\n\
 vec4 getNDCFromWC(vec3 WC, float earthRadius)\n\
 {\n\
     vec4 positionEC = czm_view * vec4(WC, 1.0);\n\
-    positionEC = vec4(positionEC.x + earthRadius , positionEC.y, positionEC.z, 1.0);\n\
+    positionEC = vec4(positionEC.x + earthRadius, positionEC.y, positionEC.z, 1.0);\n\
     vec4 positionWC = czm_eyeToWindowCoordinates(positionEC);\n\
     return czm_viewportOrthographic * vec4(positionWC.xy, -positionWC.z, 1.0);\n\
 }\n\
@@ -50,7 +49,7 @@ vec4 textureDistorted(sampler2D tex, vec2 texcoord, vec2 direction, vec3 distort
     {\n\
         color.r = isInEarth(texcoord + direction * distortion.r, sceneSize) * texture2D(tex, texcoord + direction * distortion.r).r;\n\
         color.g = isInEarth(texcoord + direction * distortion.g, sceneSize) * texture2D(tex, texcoord + direction * distortion.g).g;\n\
-        color.b = isInEarth(texcoord  + direction * distortion.b, sceneSize) * texture2D(tex, texcoord + direction * distortion.b).b;\n\
+        color.b = isInEarth(texcoord + direction * distortion.b, sceneSize) * texture2D(tex, texcoord + direction * distortion.b).b;\n\
     }\n\
     else\n\
     {\n\
@@ -77,14 +76,15 @@ void main(void)\n\
     if(!isSpace || !((sunPos.x >= -1.1 && sunPos.x <= 1.1) && (sunPos.y >= -1.1 && sunPos.y <= 1.1)))\n\
     {\n\
         // Lens flare is disabled when not in space until #5932 is fixed.\n\
-        //    https://github.com/AnalyticalGraphicsInc/cesium/issues/5932\n\
+        //    https://github.com/CesiumGS/cesium/issues/5932\n\
         gl_FragColor = originalColor;\n\
         return;\n\
     }\n\
 \n\
-    vec2 texcoord = -v_textureCoordinates + vec2(1.0);\n\
-    vec2 texelSize = 1.0 / czm_viewport.zw;\n\
-    vec3 distortionVec = vec3(-texelSize.x * distortion, 0.0, texelSize.x * distortion);\n\
+    vec2 texcoord = vec2(1.0) - v_textureCoordinates;\n\
+    vec2 pixelSize = czm_pixelRatio / czm_viewport.zw;\n\
+    vec2 invPixelSize = 1.0 / pixelSize;\n\
+    vec3 distortionVec = pixelSize.x * vec3(-distortion, 0.0, distortion);\n\
 \n\
     // ghost vector to image centre:\n\
     vec2 ghostVec = (vec2(0.5) - texcoord) * ghostDispersal;\n\
@@ -108,7 +108,8 @@ void main(void)\n\
 \n\
     result += textureDistorted(colorTexture, texcoord + haloVec, direction.xy, distortionVec, isSpace) * weightForHalo * 1.5;\n\
 \n\
-    vec2 dirtTexCoords = (v_textureCoordinates * czm_viewport.zw) / dirtTextureDimensions;\n\
+    // dirt on lens\n\
+    vec2 dirtTexCoords = (v_textureCoordinates * invPixelSize) / dirtTextureDimensions;\n\
     if (dirtTexCoords.x > 1.0)\n\
     {\n\
         dirtTexCoords.x = mod(floor(dirtTexCoords.x), 2.0) == 1.0 ? 1.0 - fract(dirtTexCoords.x) :  fract(dirtTexCoords.x);\n\
@@ -117,7 +118,7 @@ void main(void)\n\
     {\n\
         dirtTexCoords.y = mod(floor(dirtTexCoords.y), 2.0) == 1.0 ? 1.0 - fract(dirtTexCoords.y) :  fract(dirtTexCoords.y);\n\
     }\n\
-    result += texture2D(dirtTexture, dirtTexCoords);\n\
+    result += dirtAmount * texture2D(dirtTexture, dirtTexCoords);\n\
 \n\
     // Rotating starburst texture's coordinate\n\
     // dot(czm_view[0].xyz, vec3(0.0, 0.0, 1.0)) + dot(czm_view[1].xyz, vec3(0.0, 1.0, 0.0))\n\
@@ -152,4 +153,3 @@ void main(void)\n\
     gl_FragColor = result;\n\
 }\n\
 ";
-});

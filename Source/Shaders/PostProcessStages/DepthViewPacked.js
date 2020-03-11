@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform sampler2D u_depthTexture;\n\
+export default "uniform sampler2D u_depthTexture;\n\
 \n\
 varying vec2 v_textureCoordinates;\n\
 \n\
@@ -16,4 +14,3 @@ void main()\n\
     gl_FragColor = vec4(mix(vec3(0.0), vec3(1.0), scale), 1.0);\n\
 }\n\
 ";
-});

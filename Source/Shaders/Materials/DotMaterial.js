@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform vec4 lightColor;\n\
+export default "uniform vec4 lightColor;\n\
 uniform vec4 darkColor;\n\
 uniform vec2 repeat;\n\
 \n\
@@ -20,4 +18,3 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     return material;\n\
 }\n\
 ";
-});

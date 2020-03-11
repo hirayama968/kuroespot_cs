@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "attribute vec4 currentPosition;\n\
+export default "attribute vec4 currentPosition;\n\
 attribute vec4 previousPosition;\n\
 attribute vec4 nextPosition;\n\
 attribute vec2 expandAndWidth;\n\
@@ -28,4 +26,3 @@ void main()\n\
 #endif\n\
 }\n\
 ";
-});

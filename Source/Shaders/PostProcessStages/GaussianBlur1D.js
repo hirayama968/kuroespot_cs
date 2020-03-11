@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "#define SAMPLES 8\n\
+export default "#define SAMPLES 8\n\
 \n\
 uniform float delta;\n\
 uniform float sigma;\n\
@@ -26,7 +24,7 @@ void main()\n\
     vec2 dir = vec2(1.0 - direction, direction);\n\
 \n\
 #ifdef USE_STEP_SIZE\n\
-    vec2 step = vec2(stepSize / czm_viewport.zw);\n\
+    vec2 step = vec2(stepSize * (czm_pixelRatio / czm_viewport.zw));\n\
 #else\n\
     vec2 step = step;\n\
 #endif\n\
@@ -49,4 +47,3 @@ void main()\n\
     gl_FragColor = result;\n\
 }\n\
 ";
-});

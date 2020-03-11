@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * Branchless ternary operator to be used when it's inexpensive to explicitly\n\
  * evaluate both possibilities for a float expression.\n\
  *\n\
@@ -73,4 +71,3 @@ vec4 czm_branchFreeTernary(bool comparison, vec4 a, vec4 b) {\n\
     return a * useA + b * (1.0 - useA);\n\
 }\n\
 ";
-});

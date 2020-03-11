@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "#ifdef QUANTIZATION_BITS12\n\
+export default "#ifdef QUANTIZATION_BITS12\n\
 attribute vec4 compressed0;\n\
 attribute float compressed1;\n\
 #else\n\
@@ -172,7 +170,7 @@ void main()\n\
 #endif\n\
 \n\
 #if defined(FOG) || defined(GROUND_ATMOSPHERE)\n\
-    AtmosphereColor atmosFogColor = computeGroundAtmosphereFromSpace(position3DWC, false);\n\
+    AtmosphereColor atmosFogColor = computeGroundAtmosphereFromSpace(position3DWC, false, vec3(0.0));\n\
     v_fogMieColor = atmosFogColor.mie;\n\
     v_fogRayleighColor = atmosFogColor.rayleigh;\n\
     v_distance = length((czm_modelView3D * vec4(position3DWC, 1.0)).xyz);\n\
@@ -195,4 +193,3 @@ void main()\n\
 #endif\n\
 }\n\
 ";
-});

@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "varying vec4 positionEC;\n\
+export default "varying vec4 positionEC;\n\
 \n\
 void main()\n\
 {\n\
@@ -23,4 +21,3 @@ void main()\n\
     czm_writeLogDepth();\n\
 }\n\
 ";
-});

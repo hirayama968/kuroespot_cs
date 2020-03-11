@@ -30,9 +30,7 @@
  * Modifications made by Analytical Graphics, Inc.
  */
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * @license\n\
  * Copyright (c) 2000-2005, Sean O'Neil (s_p_oneil@hotmail.com)\n\
  * All rights reserved.\n\
@@ -65,7 +63,7 @@ define(function() {
  */\n\
 \n\
  // Code:  http://sponeil.net/\n\
- // GPU Gems 2 Article:  http://http.developer.nvidia.com/GPUGems2/gpugems2_chapter16.html\n\
+ // GPU Gems 2 Article:  https://developer.nvidia.com/gpugems/GPUGems2/gpugems2_chapter16.html\n\
 \n\
 #ifdef COLOR_CORRECT\n\
 uniform vec3 u_hsbShift; // Hue, saturation, brightness\n\
@@ -83,15 +81,22 @@ varying vec3 v_positionEC;\n\
 \n\
 void main (void)\n\
 {\n\
+    float lightEnum = u_cameraAndRadiiAndDynamicAtmosphereColor.w;\n\
+    vec3 lightDirection =\n\
+        czm_viewerPositionWC * float(lightEnum == 0.0) +\n\
+        czm_lightDirectionWC * float(lightEnum == 1.0) +\n\
+        czm_sunDirectionWC * float(lightEnum == 2.0);\n\
+    lightDirection = normalize(lightDirection);\n\
+\n\
     // Extra normalize added for Android\n\
-    float cosAngle = dot(czm_sunDirectionWC, normalize(v_toCamera)) / length(v_toCamera);\n\
+    float cosAngle = dot(lightDirection, normalize(v_toCamera)) / length(v_toCamera);\n\
     float rayleighPhase = 0.75 * (1.0 + cosAngle * cosAngle);\n\
     float miePhase = 1.5 * ((1.0 - g2) / (2.0 + g2)) * (1.0 + cosAngle * cosAngle) / pow(1.0 + g2 - 2.0 * g * cosAngle, 1.5);\n\
 \n\
     vec3 rgb = rayleighPhase * v_rayleighColor + miePhase * v_mieColor;\n\
 \n\
 #ifndef HDR\n\
-    const float exposure = 1.1;\n\
+    const float exposure = 2.0;\n\
     rgb = vec3(1.0) - exp(-exposure * rgb);\n\
 #endif\n\
 \n\
@@ -110,10 +115,9 @@ void main (void)\n\
     float atmosphereAlpha = clamp((u_cameraAndRadiiAndDynamicAtmosphereColor.y - u_cameraAndRadiiAndDynamicAtmosphereColor.x) / (u_cameraAndRadiiAndDynamicAtmosphereColor.y - u_cameraAndRadiiAndDynamicAtmosphereColor.z), 0.0, 1.0);\n\
 \n\
     // Alter alpha based on time of day (0.0 = night , 1.0 = day)\n\
-    float nightAlpha = (u_cameraAndRadiiAndDynamicAtmosphereColor.w > 0.0) ? clamp(dot(normalize(czm_viewerPositionWC), normalize(czm_sunPositionWC)), 0.0, 1.0) : 1.0;\n\
+    float nightAlpha = (lightEnum != 0.0) ? clamp(dot(normalize(czm_viewerPositionWC), lightDirection), 0.0, 1.0) : 1.0;\n\
     atmosphereAlpha *= pow(nightAlpha, 0.5);\n\
 \n\
     gl_FragColor = vec4(rgb, mix(rgb.b, 1.0, atmosphereAlpha) * smoothstep(0.0, 1.0, czm_morphTime));\n\
 }\n\
 ";
-});

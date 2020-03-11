@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "#ifdef GL_OES_standard_derivatives\n\
+export default "#ifdef GL_OES_standard_derivatives\n\
 #extension GL_OES_standard_derivatives : enable\n\
 #endif\n\
 \n\
@@ -158,7 +156,9 @@ void main()\n\
 #endif\n\
     gl_FragColor = color;\n\
 \n\
+#ifdef LOG_DEPTH\n\
     czm_writeLogDepth();\n\
+#endif\n\
 \n\
 #ifdef FRAGMENT_DEPTH_CHECK\n\
     float temp = v_compressed.y;\n\
@@ -208,4 +208,3 @@ void main()\n\
 \n\
 }\n\
 ";
-});

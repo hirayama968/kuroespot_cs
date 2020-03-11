@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform vec4 color;\n\
+export default "uniform vec4 color;\n\
 uniform vec4 gapColor;\n\
 uniform float dashLength;\n\
 uniform float dashPattern;\n\
@@ -25,7 +23,7 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     vec2 pos = rotate(v_polylineAngle) * gl_FragCoord.xy;\n\
 \n\
     // Get the relative position within the dash from 0 to 1\n\
-    float dashPosition = fract(pos.x / dashLength);\n\
+    float dashPosition = fract(pos.x / (dashLength * czm_pixelRatio));\n\
     // Figure out the mask index.\n\
     float maskIndex = floor(dashPosition * maskLength);\n\
     // Test the bit mask.\n\
@@ -41,4 +39,3 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     return material;\n\
 }\n\
 ";
-});

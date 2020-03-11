@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "varying vec3 v_forwardDirectionEC;\n\
+export default "varying vec3 v_forwardDirectionEC;\n\
 varying vec3 v_texcoordNormalizationAndHalfWidth;\n\
 varying float v_batchId;\n\
 \n\
@@ -47,4 +45,3 @@ void main(void)\n\
 #endif // PER_INSTANCE_COLOR\n\
 }\n\
 ";
-});

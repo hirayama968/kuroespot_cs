@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "// emulated noperspective\n\
+export default "// emulated noperspective\n\
 #ifndef LOG_DEPTH\n\
 varying float v_WindowZ;\n\
 #endif\n\
@@ -27,4 +25,3 @@ void czm_writeDepthClampedToFarPlane()\n\
 #endif\n\
 }\n\
 ";
-});

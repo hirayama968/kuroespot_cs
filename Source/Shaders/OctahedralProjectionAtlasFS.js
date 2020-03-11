@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "varying vec2 v_textureCoordinates;\n\
+export default "varying vec2 v_textureCoordinates;\n\
 \n\
 uniform float originalSize;\n\
 uniform sampler2D texture0;\n\
@@ -91,4 +89,3 @@ void main()\n\
     }\n\
 }\n\
 ";
-});

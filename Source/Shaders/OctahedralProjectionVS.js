@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "attribute vec4 position;\n\
+export default "attribute vec4 position;\n\
 attribute vec3 cubeMapCoordinates;\n\
 \n\
 varying vec3 v_cubeMapCoordinates;\n\
@@ -12,4 +10,3 @@ void main()\n\
     v_cubeMapCoordinates = cubeMapCoordinates;\n\
 }\n\
 ";
-});

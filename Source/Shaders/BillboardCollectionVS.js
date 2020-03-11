@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "#ifdef INSTANCED\n\
+export default "#ifdef INSTANCED\n\
 attribute vec2 direction;\n\
 #endif\n\
 attribute vec4 positionHighAndScale;\n\
@@ -59,7 +57,7 @@ vec4 addScreenSpaceOffset(vec4 positionEC, vec2 imageSize, float scale, vec2 dir
 {\n\
     // Note the halfSize cannot be computed in JavaScript because it is sent via\n\
     // compressed vertex attributes that coerce it to an integer.\n\
-    vec2 halfSize = imageSize * scale * czm_resolutionScale * 0.5;\n\
+    vec2 halfSize = imageSize * scale * 0.5;\n\
     halfSize *= ((direction * 2.0) - 1.0);\n\
 \n\
     vec2 originTranslate = origin * abs(halfSize);\n\
@@ -86,26 +84,10 @@ vec4 addScreenSpaceOffset(vec4 positionEC, vec2 imageSize, float scale, vec2 dir
     }\n\
 #endif\n\
 \n\
-    if (sizeInMeters)\n\
-    {\n\
-        positionEC.xy += halfSize;\n\
-    }\n\
-\n\
     mpp = czm_metersPerPixel(positionEC);\n\
+    positionEC.xy += (originTranslate + halfSize) * czm_branchFreeTernary(sizeInMeters, 1.0, mpp);\n\
+    positionEC.xy += (translate + pixelOffset) * mpp;\n\
 \n\
-    if (!sizeInMeters)\n\
-    {\n\
-        originTranslate *= mpp;\n\
-    }\n\
-\n\
-    positionEC.xy += originTranslate;\n\
-    if (!sizeInMeters)\n\
-    {\n\
-        positionEC.xy += halfSize * mpp;\n\
-    }\n\
-\n\
-    positionEC.xy += translate * mpp;\n\
-    positionEC.xy += (pixelOffset * czm_resolutionScale) * mpp;\n\
     return positionEC;\n\
 }\n\
 \n\
@@ -380,7 +362,7 @@ if (lengthSq < disableDepthTestDistance) {\n\
             // Position z on the near plane.\n\
             gl_Position.z = -gl_Position.w;\n\
 #ifdef LOG_DEPTH\n\
-            czm_vertexLogDepth(vec4(czm_currentFrustum.x));\n\
+            v_depthFromNearPlusOne = 1.0;\n\
 #endif\n\
         }\n\
     }\n\
@@ -451,4 +433,3 @@ if (lengthSq < disableDepthTestDistance) {\n\
 \n\
 }\n\
 ";
-});

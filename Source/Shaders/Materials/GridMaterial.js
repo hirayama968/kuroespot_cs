@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "#ifdef GL_OES_standard_derivatives\n\
+export default "#ifdef GL_OES_standard_derivatives\n\
     #extension GL_OES_standard_derivatives : enable\n\
 #endif\n\
 \n\
@@ -26,7 +24,7 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
 #ifdef GL_OES_standard_derivatives\n\
     // Fuzz Factor - Controls blurriness of lines\n\
     const float fuzz = 1.2;\n\
-    vec2 thickness = (lineThickness * czm_resolutionScale) - 1.0;\n\
+    vec2 thickness = (lineThickness * czm_pixelRatio) - 1.0;\n\
 \n\
     // From \"3D Engine Design for Virtual Globes\" by Cozzi and Ring, Listing 4.13.\n\
     vec2 dx = abs(dFdx(st));\n\
@@ -62,4 +60,3 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     return material;\n\
 }\n\
 ";
-});

@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * Computes distance from a point to a plane.\n\
  *\n\
  * @name czm_planeDistance\n\
@@ -30,4 +28,3 @@ float czm_planeDistance(vec3 planeNormal, float planeDistance, vec3 point) {\n\
     return (dot(planeNormal, point) + planeDistance);\n\
 }\n\
 ";
-});

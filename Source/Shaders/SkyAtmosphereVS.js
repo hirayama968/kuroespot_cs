@@ -30,9 +30,7 @@
  * Modifications made by Analytical Graphics, Inc.
  */
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * @license\n\
  * Copyright (c) 2000-2005, Sean O'Neil (s_p_oneil@hotmail.com)\n\
  * All rights reserved.\n\
@@ -65,7 +63,7 @@ define(function() {
  */\n\
 \n\
  // Code:  http://sponeil.net/\n\
- // GPU Gems 2 Article:  http://http.developer.nvidia.com/GPUGems2/gpugems2_chapter16.html\n\
+ // GPU Gems 2 Article:  https://developer.nvidia.com/gpugems/GPUGems2/gpugems2_chapter16.html\n\
 \n\
 attribute vec4 position;\n\
 \n\
@@ -133,6 +131,13 @@ void main(void)\n\
     float startOffset = depth*scale(startAngle);\n\
 #endif\n\
 \n\
+    float lightEnum = u_cameraAndRadiiAndDynamicAtmosphereColor.w;\n\
+    vec3 lightDirection =\n\
+        czm_viewerPositionWC * float(lightEnum == 0.0) +\n\
+        czm_lightDirectionWC * float(lightEnum == 1.0) +\n\
+        czm_sunDirectionWC * float(lightEnum == 2.0);\n\
+    lightDirection = normalize(lightDirection);\n\
+\n\
     // Initialize the scattering loop variables\n\
     float sampleLength = far / fSamples;\n\
     float scaledLength = sampleLength * atmosphereScale;\n\
@@ -141,14 +146,12 @@ void main(void)\n\
 \n\
     // Now loop through the sample rays\n\
     vec3 frontColor = vec3(0.0, 0.0, 0.0);\n\
-    vec3 lightDir = (u_cameraAndRadiiAndDynamicAtmosphereColor.w > 0.0) ? czm_sunPositionWC - czm_viewerPositionWC : czm_viewerPositionWC;\n\
-    lightDir = normalize(lightDir);\n\
 \n\
     for(int i=0; i<nSamples; i++)\n\
     {\n\
         float height = length(samplePoint);\n\
         float depth = exp((atmosphereScale / rayleighScaleDepth ) * (innerRadius - height));\n\
-        float fLightAngle = dot(lightDir, samplePoint) / height;\n\
+        float fLightAngle = dot(lightDirection, samplePoint) / height;\n\
         float fCameraAngle = dot(ray, samplePoint) / height;\n\
         float fScatter = (startOffset + depth*(scale(fLightAngle) - scale(fCameraAngle)));\n\
         vec3 attenuate = exp(-fScatter * (InvWavelength * Kr4PI + Km4PI));\n\
@@ -163,4 +166,3 @@ void main(void)\n\
     gl_Position = czm_modelViewProjection * position;\n\
 }\n\
 ";
-});

@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "varying vec4 v_color;\n\
+export default "varying vec4 v_color;\n\
 varying vec4 v_outlineColor;\n\
 varying float v_innerPercent;\n\
 varying float v_pixelDistance;\n\
@@ -45,4 +43,3 @@ void main()\n\
     czm_writeLogDepth();\n\
 }\n\
 ";
-});

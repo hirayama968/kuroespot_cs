@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * Converts a color from RGB space to linear space.\n\
  *\n\
  * @name czm_gammaCorrect\n\
@@ -24,4 +22,3 @@ vec4 czm_gammaCorrect(vec4 color) {\n\
     return color;\n\
 }\n\
 ";
-});

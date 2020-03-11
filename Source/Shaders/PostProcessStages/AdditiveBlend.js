@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform sampler2D colorTexture;\n\
+export default "uniform sampler2D colorTexture;\n\
 uniform sampler2D colorTexture2;\n\
 \n\
 uniform vec2 center;\n\
@@ -19,4 +17,3 @@ void main()\n\
     gl_FragColor = mix(color0 + color1, color1, t);\n\
 }\n\
 ";
-});

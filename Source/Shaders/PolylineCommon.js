@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "void clipLineSegmentToNearPlane(\n\
+export default "void clipLineSegmentToNearPlane(\n\
     vec3 p0,\n\
     vec3 p1,\n\
     out vec4 positionWC,\n\
@@ -120,7 +118,7 @@ vec4 getPolylineWindowCoordinatesEC(vec4 positionEC, vec4 prevEC, vec4 nextEC, f
         expandWidth = clamp(expandWidth / sinAngle, 0.0, width * 2.0);\n\
     }\n\
 \n\
-    vec2 offset = direction * expandDirection * expandWidth * czm_resolutionScale;\n\
+    vec2 offset = direction * expandDirection * expandWidth * czm_pixelRatio;\n\
     return vec4(endPointWC.xy + offset, -endPointWC.z, 1.0);\n\
 }\n\
 \n\
@@ -132,4 +130,3 @@ vec4 getPolylineWindowCoordinates(vec4 position, vec4 previous, vec4 next, float
     return getPolylineWindowCoordinatesEC(positionEC, prevEC, nextEC, expandDirection, width, usePrevious, angle);\n\
 }\n\
 ";
-});

@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform sampler2D colorTexture;\n\
+export default "uniform sampler2D colorTexture;\n\
 uniform float contrast;\n\
 uniform float brightness;\n\
 \n\
@@ -19,4 +17,3 @@ void main(void)\n\
     gl_FragColor = vec4(sceneColor, 1.0);\n\
 }\n\
 ";
-});

@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "varying vec3 v_positionMC;\n\
+export default "varying vec3 v_positionMC;\n\
 varying vec3 v_positionEC;\n\
 varying vec2 v_st;\n\
 \n\
@@ -31,8 +29,7 @@ void main()\n\
 #ifdef FLAT\n\
     gl_FragColor = vec4(material.diffuse + material.emission, material.alpha);\n\
 #else\n\
-    gl_FragColor = czm_phong(normalize(positionToEyeEC), material);\n\
+    gl_FragColor = czm_phong(normalize(positionToEyeEC), material, czm_lightDirectionEC);\n\
 #endif\n\
 }\n\
 ";
-});

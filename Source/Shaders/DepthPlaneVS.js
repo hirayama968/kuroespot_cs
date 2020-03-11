@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "attribute vec4 position;\n\
+export default "attribute vec4 position;\n\
 \n\
 varying vec4 positionEC;\n\
 \n\
@@ -13,4 +11,3 @@ void main()\n\
     czm_vertexLogDepth();\n\
 }\n\
 ";
-});

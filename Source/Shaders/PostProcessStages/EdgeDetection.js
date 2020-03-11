@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform sampler2D depthTexture;\n\
+export default "uniform sampler2D depthTexture;\n\
 uniform float length;\n\
 uniform vec4 color;\n\
 \n\
@@ -19,8 +17,8 @@ void main(void)\n\
     scalars[1] = 10.0;\n\
     scalars[2] = 3.0;\n\
 \n\
-    float padx = 1.0 / czm_viewport.z;\n\
-    float pady = 1.0 / czm_viewport.w;\n\
+    float padx = czm_pixelRatio / czm_viewport.z;\n\
+    float pady = czm_pixelRatio / czm_viewport.w;\n\
 \n\
 #ifdef CZM_SELECTED_FEATURE\n\
     bool selected = false;\n\
@@ -62,4 +60,3 @@ void main(void)\n\
     gl_FragColor = vec4(color.rgb, len > length ? color.a : 0.0);\n\
 }\n\
 ";
-});

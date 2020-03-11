@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform sampler2D colorTexture;\n\
+export default "uniform sampler2D colorTexture;\n\
 uniform sampler2D ambientOcclusionTexture;\n\
 uniform bool ambientOcclusionOnly;\n\
 varying vec2 v_textureCoordinates;\n\
@@ -13,4 +11,3 @@ void main(void)\n\
     gl_FragColor.rgb = ambientOcclusionOnly ? ao : ao * color;\n\
 }\n\
 ";
-});

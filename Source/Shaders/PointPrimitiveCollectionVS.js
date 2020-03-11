@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform float u_maxTotalPointSize;\n\
+export default "uniform float u_maxTotalPointSize;\n\
 \n\
 attribute vec4 positionHighAndSize;\n\
 attribute vec4 positionLowAndOutline;\n\
@@ -30,7 +28,7 @@ void main()\n\
     float totalSize = positionHighAndSize.w + outlineWidthBothSides;\n\
     float outlinePercent = outlineWidthBothSides / totalSize;\n\
     // Scale in response to browser-zoom.\n\
-    totalSize *= czm_resolutionScale;\n\
+    totalSize *= czm_pixelRatio;\n\
     // Add padding for anti-aliasing on both sides.\n\
     totalSize += 3.0;\n\
 \n\
@@ -94,7 +92,6 @@ void main()\n\
 \n\
     vec4 p = czm_translateRelativeToEye(positionHigh, positionLow);\n\
     vec4 positionEC = czm_modelViewRelativeToEye * p;\n\
-    positionEC.xyz *= show;\n\
 \n\
     ///////////////////////////////////////////////////////////////////////////\n\
 \n\
@@ -139,7 +136,8 @@ void main()\n\
     float nearSq = distanceDisplayConditionAndDisableDepth.x;\n\
     float farSq = distanceDisplayConditionAndDisableDepth.y;\n\
     if (lengthSq < nearSq || lengthSq > farSq) {\n\
-        positionEC.xyz = vec3(0.0);\n\
+        // push vertex behind camera to force it to be clipped\n\
+        positionEC.xyz = vec3(0.0, 0.0, 1.0);\n\
     }\n\
 #endif\n\
 \n\
@@ -170,15 +168,15 @@ void main()\n\
 #endif\n\
 \n\
     v_color = color;\n\
-    v_color.a *= translucency;\n\
+    v_color.a *= translucency * show;\n\
     v_outlineColor = outlineColor;\n\
-    v_outlineColor.a *= translucency;\n\
+    v_outlineColor.a *= translucency * show;\n\
 \n\
     v_innerPercent = 1.0 - outlinePercent;\n\
     v_pixelDistance = 2.0 / totalSize;\n\
-    gl_PointSize = totalSize;\n\
+    gl_PointSize = totalSize * show;\n\
+    gl_Position *= show;\n\
 \n\
     v_pickColor = pickColor;\n\
 }\n\
 ";
-});

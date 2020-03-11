@@ -1,5 +1,6 @@
 // This file is automatically rebuilt by the Cesium build process.
-var hello_world_index = 88;
+var hello_world_index = 91;
+var VERSION = '1.67';
 var gallery_demos = [{
   "name": "3D Models",
   "isNew": false,
@@ -113,6 +114,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "CZML.jpg"
 }, {
+  "name": "CZML 3D Tiles",
+  "isNew": true,
+  "img": "CZML 3D Tiles.jpg"
+}, {
   "name": "CZML Billboard and Label",
   "isNew": false,
   "img": "CZML Billboard and Label.jpg"
@@ -152,6 +157,10 @@ var gallery_demos = [{
   "name": "CZML Model Articulations",
   "isNew": false,
   "img": "CZML Model Articulations.jpg"
+}, {
+  "name": "CZML Model Data URL",
+  "isNew": false,
+  "img": "CZML Model Data URL.jpg"
 }, {
   "name": "CZML Path",
   "isNew": false,
@@ -317,6 +326,10 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Export KML.jpg"
 }, {
+  "name": "FXAA",
+  "isNew": false,
+  "img": "FXAA.jpg"
+}, {
   "name": "GeoJSON and TopoJSON",
   "isNew": false,
   "img": "GeoJSON and TopoJSON.jpg"
@@ -356,6 +369,10 @@ var gallery_demos = [{
   "name": "Hello World",
   "isNew": false,
   "img": "Hello World.jpg"
+}, {
+  "name": "High Dynamic Range",
+  "isNew": false,
+  "img": "High Dynamic Range.jpg"
 }, {
   "name": "Image-Based Lighting",
   "isNew": false,
@@ -406,12 +423,16 @@ var gallery_demos = [{
   "img": "Labels.jpg"
 }, {
   "name": "Labels SDF",
-  "isNew": true,
+  "isNew": false,
   "img": "Labels SDF.jpg"
 }, {
   "name": "LensFlare",
   "isNew": false,
   "img": "LensFlare.jpg"
+}, {
+  "name": "Lighting",
+  "isNew": false,
+  "img": "Lighting.jpg"
 }, {
   "name": "LocalToFixedFrame",
   "isNew": false,
@@ -448,6 +469,10 @@ var gallery_demos = [{
   "name": "PAMAP Terrain",
   "isNew": false,
   "img": "PAMAP Terrain.jpg"
+}, {
+  "name": "Partial Ellipsoids",
+  "isNew": false,
+  "img": "Partial Ellipsoids.jpg"
 }, {
   "name": "Particle System",
   "isNew": false,
@@ -516,6 +541,10 @@ var gallery_demos = [{
   "name": "Rectangle",
   "isNew": false,
   "img": "Rectangle.jpg"
+}, {
+  "name": "Resolution Scaling",
+  "isNew": false,
+  "img": "Resolution Scaling.jpg"
 }, {
   "name": "Rotatable 2D Map",
   "isNew": false,

@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return " /**\n\
+export default " /**\n\
   * Decodes a unit-length vector in 'oct' encoding to a normalized 3-component Cartesian vector.\n\
   * The 'oct' encoding is described in \"A Survey of Efficient Representations of Independent Unit Vectors\",\n\
   * Cigolle et al 2014: http://jcgt.org/published/0003/02/01/\n\
@@ -85,4 +83,3 @@ define(function() {
  }\n\
 \n\
 ";
-});

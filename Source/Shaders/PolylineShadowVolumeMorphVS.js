@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "attribute vec3 position3DHigh;\n\
+export default "attribute vec3 position3DHigh;\n\
 attribute vec3 position3DLow;\n\
 \n\
 attribute vec4 startHiAndForwardOffsetX;\n\
@@ -179,4 +177,3 @@ void main()\n\
 #endif\n\
 }\n\
 ";
-});

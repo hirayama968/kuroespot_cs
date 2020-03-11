@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "\n\
+export default "\n\
 float czm_sampleShadowMap(samplerCube shadowMap, vec3 d)\n\
 {\n\
     return czm_unpackDepth(textureCube(shadowMap, d));\n\
@@ -26,4 +24,3 @@ float czm_shadowDepthCompare(sampler2D shadowMap, vec2 uv, float depth)\n\
     return step(depth, czm_sampleShadowMap(shadowMap, uv));\n\
 }\n\
 ";
-});

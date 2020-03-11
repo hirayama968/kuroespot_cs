@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "#ifdef GL_EXT_frag_depth\n\
+export default "#ifdef GL_EXT_frag_depth\n\
 #extension GL_EXT_frag_depth : enable\n\
 #endif\n\
 \n\
@@ -89,4 +87,3 @@ void main(void)\n\
     czm_writeDepthClampedToFarPlane();\n\
 }\n\
 ";
-});

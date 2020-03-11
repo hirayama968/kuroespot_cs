@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "uniform sampler2D randomTexture;\n\
+export default "uniform sampler2D randomTexture;\n\
 uniform sampler2D depthTexture;\n\
 uniform float intensity;\n\
 uniform float bias;\n\
@@ -49,11 +47,11 @@ void main(void)\n\
         return;\n\
     }\n\
 \n\
-    vec2 pixelSize = 1.0 / czm_viewport.zw;\n\
-    float depthU = czm_readDepth(depthTexture, v_textureCoordinates- vec2(0.0, pixelSize.y));\n\
-    float depthD = czm_readDepth(depthTexture, v_textureCoordinates+ vec2(0.0, pixelSize.y));\n\
-    float depthL = czm_readDepth(depthTexture, v_textureCoordinates- vec2(pixelSize.x, 0.0));\n\
-    float depthR = czm_readDepth(depthTexture, v_textureCoordinates+ vec2(pixelSize.x, 0.0));\n\
+    vec2 pixelSize = czm_pixelRatio / czm_viewport.zw;\n\
+    float depthU = czm_readDepth(depthTexture, v_textureCoordinates - vec2(0.0, pixelSize.y));\n\
+    float depthD = czm_readDepth(depthTexture, v_textureCoordinates + vec2(0.0, pixelSize.y));\n\
+    float depthL = czm_readDepth(depthTexture, v_textureCoordinates - vec2(pixelSize.x, 0.0));\n\
+    float depthR = czm_readDepth(depthTexture, v_textureCoordinates + vec2(pixelSize.x, 0.0));\n\
     vec3 normalInCamera = getNormalXEdge(posInCamera.xyz, depthU, depthD, depthL, depthR, pixelSize);\n\
 \n\
     float ao = 0.0;\n\
@@ -62,9 +60,6 @@ void main(void)\n\
 \n\
     // RandomNoise\n\
     float randomVal = texture2D(randomTexture, v_textureCoordinates).x;\n\
-\n\
-    float inverseViewportWidth = 1.0 / czm_viewport.z;\n\
-    float inverseViewportHeight = 1.0 / czm_viewport.w;\n\
 \n\
     //Loop for each direction\n\
     for (int i = 0; i < 4; i++)\n\
@@ -81,8 +76,7 @@ void main(void)\n\
         //Loop for each step\n\
         for (int j = 0; j < 6; j++)\n\
         {\n\
-            vec2 directionWithStep = vec2(rotatedSampleDirection.x * localStepSize * inverseViewportWidth, rotatedSampleDirection.y * localStepSize * inverseViewportHeight);\n\
-            vec2 newCoords = directionWithStep + v_textureCoordinates;\n\
+            vec2 newCoords = v_textureCoordinates + rotatedSampleDirection * localStepSize * pixelSize;\n\
 \n\
             //Exception Handling\n\
             if(newCoords.x > 1.0 || newCoords.y > 1.0 || newCoords.x < 0.0 || newCoords.y < 0.0)\n\
@@ -121,4 +115,3 @@ void main(void)\n\
     gl_FragColor = vec4(vec3(ao), 1.0);\n\
 }\n\
 ";
-});

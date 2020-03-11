@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "// Thanks for the contribution Jonas\n\
+export default "// Thanks for the contribution Jonas\n\
 // http://29a.ch/2012/7/19/webgl-terrain-rendering-water-fog\n\
 \n\
 uniform sampler2D specularMap;\n\
@@ -41,7 +39,7 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     float tsPerturbationRatio = clamp(dot(normalTangentSpace, vec3(0.0, 0.0, 1.0)), 0.0, 1.0);\n\
 \n\
     // fade out water effect as specular map value decreases\n\
-    material.alpha = specularMapValue;\n\
+    material.alpha = mix(blendColor.a, baseWaterColor.a, specularMapValue) * specularMapValue;\n\
 \n\
     // base color is a blend of the water and non-water color based on the value from the specular map\n\
     // may need a uniform blend factor to better control this\n\
@@ -60,4 +58,3 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     return material;\n\
 }\n\
 ";
-});

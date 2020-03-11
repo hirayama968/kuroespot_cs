@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "/**\n\
+export default "/**\n\
  * Approxiamtes atan over the range [0, 1]. Safe to flip output for negative input.\n\
  *\n\
  * Based on Michal Drobot's approximation from ShaderFastLibs, which in turn is based on\n\
@@ -57,4 +55,3 @@ float czm_fastApproximateAtan(float x, float y) {\n\
     return t;\n\
 }\n\
 ";
-});

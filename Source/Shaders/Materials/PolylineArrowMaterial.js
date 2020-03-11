@@ -1,7 +1,5 @@
 //This file is automatically rebuilt by the Cesium build process.
-define(function() {
-    'use strict';
-    return "#ifdef GL_OES_standard_derivatives\n\
+export default "#ifdef GL_OES_standard_derivatives\n\
 #extension GL_OES_standard_derivatives : enable\n\
 #endif\n\
 \n\
@@ -22,9 +20,9 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     vec2 st = materialInput.st;\n\
 \n\
 #ifdef GL_OES_standard_derivatives\n\
-    float base = 1.0 - abs(fwidth(st.s)) * 10.0;\n\
+    float base = 1.0 - abs(fwidth(st.s)) * 10.0 * czm_pixelRatio;\n\
 #else\n\
-    float base = 0.99; // 1% of the line will be the arrow head\n\
+    float base = 0.975; // 2.5% of the line will be the arrow head\n\
 #endif\n\
 \n\
     vec2 center = vec2(1.0, 0.5);\n\
@@ -70,4 +68,3 @@ czm_material czm_getMaterial(czm_materialInput materialInput)\n\
     return material;\n\
 }\n\
 ";
-});
