@@ -20,55 +20,60 @@
  * Portions licensed separately.
  * See https://github.com/CesiumGS/cesium/blob/master/LICENSE.md for full licensing details.
  */
-define(['./when-a55a8a4c', './Check-bc1d37d9', './Math-d7cbfcf6', './Cartesian2-6ec3db89', './Transforms-a4d7073e', './RuntimeError-7c184ac0', './WebGLConstants-4c11ee5f', './ComponentDatatype-919a7463', './GeometryAttribute-291ff23b', './GeometryAttributes-1c7ce91d', './AttributeCompression-6cfb9427', './GeometryPipeline-9b42374e', './EncodedCartesian3-5ad054af', './IndexDatatype-4351ba4c', './IntersectionTests-3d9e1b94', './Plane-37b84dad', './PrimitivePipeline-18b85988', './WebMercatorProjection-e471eea5', './createTaskProcessorWorker'], function (when, Check, _Math, Cartesian2, Transforms, RuntimeError, WebGLConstants, ComponentDatatype, GeometryAttribute, GeometryAttributes, AttributeCompression, GeometryPipeline, EncodedCartesian3, IndexDatatype, IntersectionTests, Plane, PrimitivePipeline, WebMercatorProjection, createTaskProcessorWorker) { 'use strict';
 
-    /* global require */
+define(['./when-b43ff45e', './Check-d404a0fe', './Math-ff83510d', './Cartesian2-d59b2dc1', './Transforms-80c667c2', './RuntimeError-bf10f3d5', './WebGLConstants-56de22c0', './ComponentDatatype-560e725a', './GeometryAttribute-ea3e1579', './GeometryAttributes-fbf888b4', './AttributeCompression-43e9d5b6', './GeometryPipeline-43cf88e7', './EncodedCartesian3-b3206de4', './IndexDatatype-f0ba7ec6', './IntersectionTests-3c24f322', './Plane-d2fbaf25', './PrimitivePipeline-57d2c918', './WebMercatorProjection-eb6b2471', './createTaskProcessorWorker'], function (when, Check, _Math, Cartesian2, Transforms, RuntimeError, WebGLConstants, ComponentDatatype, GeometryAttribute, GeometryAttributes, AttributeCompression, GeometryPipeline, EncodedCartesian3, IndexDatatype, IntersectionTests, Plane, PrimitivePipeline, WebMercatorProjection, createTaskProcessorWorker) { 'use strict';
 
-        var moduleCache = {};
+  /* global require */
 
-        function getModule(moduleName) {
-            var module = moduleCache[moduleName];
-            if (!when.defined(module)) {
-                if (typeof exports === 'object') {
-                    // Use CommonJS-style require.
-                    moduleCache[module] = module = require('Workers/' + moduleName);
-                } else {
-                    // Use AMD-style require.
-                    // in web workers, require is synchronous
-                    require(['Workers/' + moduleName], function(f) {
-                        module = f;
-                        moduleCache[module] = f;
-                    });
-                }
-            }
-            return module;
-        }
+  var moduleCache = {};
 
-        function createGeometry(parameters, transferableObjects) {
-            var subTasks = parameters.subTasks;
-            var length = subTasks.length;
-            var resultsOrPromises = new Array(length);
+  function getModule(moduleName) {
+    var module = moduleCache[moduleName];
+    if (!when.defined(module)) {
+      if (typeof exports === "object") {
+        // Use CommonJS-style require.
+        moduleCache[module] = module = require("Workers/" + moduleName);
+      } else {
+        // Use AMD-style require.
+        // in web workers, require is synchronous
+        require(["Workers/" + moduleName], function (f) {
+          module = f;
+          moduleCache[module] = f;
+        });
+      }
+    }
+    return module;
+  }
 
-            for (var i = 0; i < length; i++) {
-                var task = subTasks[i];
-                var geometry = task.geometry;
-                var moduleName = task.moduleName;
+  function createGeometry(parameters, transferableObjects) {
+    var subTasks = parameters.subTasks;
+    var length = subTasks.length;
+    var resultsOrPromises = new Array(length);
 
-                if (when.defined(moduleName)) {
-                    var createFunction = getModule(moduleName);
-                    resultsOrPromises[i] = createFunction(geometry, task.offset);
-                } else {
-                    //Already created geometry
-                    resultsOrPromises[i] = geometry;
-                }
-            }
+    for (var i = 0; i < length; i++) {
+      var task = subTasks[i];
+      var geometry = task.geometry;
+      var moduleName = task.moduleName;
 
-            return when.when.all(resultsOrPromises, function(results) {
-                return PrimitivePipeline.PrimitivePipeline.packCreateGeometryResults(results, transferableObjects);
-            });
-        }
-    var createGeometry$1 = createTaskProcessorWorker(createGeometry);
+      if (when.defined(moduleName)) {
+        var createFunction = getModule(moduleName);
+        resultsOrPromises[i] = createFunction(geometry, task.offset);
+      } else {
+        //Already created geometry
+        resultsOrPromises[i] = geometry;
+      }
+    }
 
-    return createGeometry$1;
+    return when.when.all(resultsOrPromises, function (results) {
+      return PrimitivePipeline.PrimitivePipeline.packCreateGeometryResults(
+        results,
+        transferableObjects
+      );
+    });
+  }
+  var createGeometry$1 = createTaskProcessorWorker(createGeometry);
+
+  return createGeometry$1;
 
 });
+//# sourceMappingURL=createGeometry.js.map

@@ -20,17 +20,19 @@
  * Portions licensed separately.
  * See https://github.com/CesiumGS/cesium/blob/master/LICENSE.md for full licensing details.
  */
-define(['./when-a55a8a4c', './Check-bc1d37d9', './Math-d7cbfcf6', './Cartesian2-6ec3db89', './Transforms-a4d7073e', './RuntimeError-7c184ac0', './WebGLConstants-4c11ee5f', './ComponentDatatype-919a7463', './GeometryAttribute-291ff23b', './GeometryAttributes-1c7ce91d', './AttributeCompression-6cfb9427', './GeometryPipeline-9b42374e', './EncodedCartesian3-5ad054af', './IndexDatatype-4351ba4c', './IntersectionTests-3d9e1b94', './Plane-37b84dad', './GeometryOffsetAttribute-c9accdb9', './VertexFormat-7f136973', './EllipseGeometryLibrary-62835faa', './GeometryInstance-fadc2629', './EllipseGeometry-cb7017cd'], function (when, Check, _Math, Cartesian2, Transforms, RuntimeError, WebGLConstants, ComponentDatatype, GeometryAttribute, GeometryAttributes, AttributeCompression, GeometryPipeline, EncodedCartesian3, IndexDatatype, IntersectionTests, Plane, GeometryOffsetAttribute, VertexFormat, EllipseGeometryLibrary, GeometryInstance, EllipseGeometry) { 'use strict';
 
-    function createEllipseGeometry(ellipseGeometry, offset) {
-            if (when.defined(offset)) {
-                ellipseGeometry = EllipseGeometry.EllipseGeometry.unpack(ellipseGeometry, offset);
-            }
-            ellipseGeometry._center = Cartesian2.Cartesian3.clone(ellipseGeometry._center);
-            ellipseGeometry._ellipsoid = Cartesian2.Ellipsoid.clone(ellipseGeometry._ellipsoid);
-            return EllipseGeometry.EllipseGeometry.createGeometry(ellipseGeometry);
-        }
+define(['./when-b43ff45e', './Check-d404a0fe', './Math-ff83510d', './Cartesian2-d59b2dc1', './Transforms-80c667c2', './RuntimeError-bf10f3d5', './WebGLConstants-56de22c0', './ComponentDatatype-560e725a', './GeometryAttribute-ea3e1579', './GeometryAttributes-fbf888b4', './AttributeCompression-43e9d5b6', './GeometryPipeline-43cf88e7', './EncodedCartesian3-b3206de4', './IndexDatatype-f0ba7ec6', './IntersectionTests-3c24f322', './Plane-d2fbaf25', './GeometryOffsetAttribute-48d2619e', './VertexFormat-0205f272', './EllipseGeometryLibrary-a1429cd9', './GeometryInstance-bd03ec3e', './EllipseGeometry-e39bbc98'], function (when, Check, _Math, Cartesian2, Transforms, RuntimeError, WebGLConstants, ComponentDatatype, GeometryAttribute, GeometryAttributes, AttributeCompression, GeometryPipeline, EncodedCartesian3, IndexDatatype, IntersectionTests, Plane, GeometryOffsetAttribute, VertexFormat, EllipseGeometryLibrary, GeometryInstance, EllipseGeometry) { 'use strict';
 
-    return createEllipseGeometry;
+  function createEllipseGeometry(ellipseGeometry, offset) {
+    if (when.defined(offset)) {
+      ellipseGeometry = EllipseGeometry.EllipseGeometry.unpack(ellipseGeometry, offset);
+    }
+    ellipseGeometry._center = Cartesian2.Cartesian3.clone(ellipseGeometry._center);
+    ellipseGeometry._ellipsoid = Cartesian2.Ellipsoid.clone(ellipseGeometry._ellipsoid);
+    return EllipseGeometry.EllipseGeometry.createGeometry(ellipseGeometry);
+  }
+
+  return createEllipseGeometry;
 
 });
+//# sourceMappingURL=createEllipseGeometry.js.map

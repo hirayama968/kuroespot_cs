@@ -20,15 +20,17 @@
  * Portions licensed separately.
  * See https://github.com/CesiumGS/cesium/blob/master/LICENSE.md for full licensing details.
  */
-define(['./when-a55a8a4c', './Check-bc1d37d9', './Math-d7cbfcf6', './Cartesian2-6ec3db89', './Transforms-a4d7073e', './RuntimeError-7c184ac0', './WebGLConstants-4c11ee5f', './ComponentDatatype-919a7463', './GeometryAttribute-291ff23b', './GeometryAttributes-1c7ce91d', './IndexDatatype-4351ba4c', './GeometryOffsetAttribute-c9accdb9', './VertexFormat-7f136973', './EllipsoidGeometry-f17b1f34'], function (when, Check, _Math, Cartesian2, Transforms, RuntimeError, WebGLConstants, ComponentDatatype, GeometryAttribute, GeometryAttributes, IndexDatatype, GeometryOffsetAttribute, VertexFormat, EllipsoidGeometry) { 'use strict';
 
-    function createEllipsoidGeometry(ellipsoidGeometry, offset) {
-            if (when.defined(offset)) {
-                ellipsoidGeometry = EllipsoidGeometry.EllipsoidGeometry.unpack(ellipsoidGeometry, offset);
-            }
-            return EllipsoidGeometry.EllipsoidGeometry.createGeometry(ellipsoidGeometry);
-        }
+define(['./when-b43ff45e', './Check-d404a0fe', './Math-ff83510d', './Cartesian2-d59b2dc1', './Transforms-80c667c2', './RuntimeError-bf10f3d5', './WebGLConstants-56de22c0', './ComponentDatatype-560e725a', './GeometryAttribute-ea3e1579', './GeometryAttributes-fbf888b4', './IndexDatatype-f0ba7ec6', './GeometryOffsetAttribute-48d2619e', './VertexFormat-0205f272', './EllipsoidGeometry-c0bdabbd'], function (when, Check, _Math, Cartesian2, Transforms, RuntimeError, WebGLConstants, ComponentDatatype, GeometryAttribute, GeometryAttributes, IndexDatatype, GeometryOffsetAttribute, VertexFormat, EllipsoidGeometry) { 'use strict';
 
-    return createEllipsoidGeometry;
+  function createEllipsoidGeometry(ellipsoidGeometry, offset) {
+    if (when.defined(offset)) {
+      ellipsoidGeometry = EllipsoidGeometry.EllipsoidGeometry.unpack(ellipsoidGeometry, offset);
+    }
+    return EllipsoidGeometry.EllipsoidGeometry.createGeometry(ellipsoidGeometry);
+  }
+
+  return createEllipsoidGeometry;
 
 });
+//# sourceMappingURL=createEllipsoidGeometry.js.map

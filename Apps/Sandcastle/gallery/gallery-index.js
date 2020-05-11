@@ -1,6 +1,6 @@
 // This file is automatically rebuilt by the Cesium build process.
 var hello_world_index = 91;
-var VERSION = '1.67';
+var VERSION = '1.69';
 var gallery_demos = [{
   "name": "3D Models",
   "isNew": false,
@@ -115,7 +115,7 @@ var gallery_demos = [{
   "img": "CZML.jpg"
 }, {
   "name": "CZML 3D Tiles",
-  "isNew": true,
+  "isNew": false,
   "img": "CZML 3D Tiles.jpg"
 }, {
   "name": "CZML Billboard and Label",
@@ -422,10 +422,6 @@ var gallery_demos = [{
   "isNew": false,
   "img": "Labels.jpg"
 }, {
-  "name": "Labels SDF",
-  "isNew": false,
-  "img": "Labels SDF.jpg"
-}, {
   "name": "LensFlare",
   "isNew": false,
   "img": "LensFlare.jpg"
@@ -469,6 +465,10 @@ var gallery_demos = [{
   "name": "PAMAP Terrain",
   "isNew": false,
   "img": "PAMAP Terrain.jpg"
+}, {
+  "name": "Parallels and Meridians",
+  "isNew": true,
+  "img": "Parallels and Meridians.jpg"
 }, {
   "name": "Partial Ellipsoids",
   "isNew": false,
